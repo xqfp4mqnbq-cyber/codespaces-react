@@ -1,31 +1,233 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --primary-gradient-1: #667eea;
+  --primary-gradient-2: #764ba2;
+  --success-gradient-1: #84fab0;
+  --success-gradient-2: #8fd3f4;
+  --warning-gradient-1: #ffb347;
+  --warning-gradient-2: #ff6f00;
+  --danger-gradient-1: #ff6b6b;
+  --danger-gradient-2: #d32f2f;
 }
 
-.App-header {
-  background-color: #282c34;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
+}
+
+.App {
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.app-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.app-header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 40px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
   color: white;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
-.App-link {
-  color: #61dafb;
+.header-content h1 {
+  font-size: 32px;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.heart {
-  color: #ff0000;
+.subtitle {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
 }
 
-.small {
-  font-size: 0.75rem;
+.refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.refresh-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.refresh-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.refresh-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.refresh-btn .spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app-main {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.last-update {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  color: white;
+  margin-bottom: 30px;
+  backdrop-filter: blur(10px);
+  font-size: 14px;
+}
+
+.last-update p {
+  margin: 5px 0;
+}
+
+.last-update strong {
+  font-weight: 700;
+  color: #ffd700;
+}
+
+.next-update {
+  font-size: 12px !important;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 30px;
+  color: rgba(255, 255, 255, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 40px;
+  font-size: 12px;
+}
+
+.app-footer p {
+  margin: 8px 0;
+}
+
+.footer-note {
+  opacity: 0.7;
+  font-size: 11px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .header-content h1 {
+    font-size: 24px;
+  }
+
+  .header-content {
+    width: 100%;
+  }
+
+  .refresh-btn {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .App {
+    padding: 15px;
+  }
+
+  .app-container {
+    max-width: 100%;
+  }
+
+  .app-header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .header-content h1 {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .refresh-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .last-update {
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+
+  .app-footer {
+    padding: 20px;
+    margin-top: 30px;
+    font-size: 11px;
+  }
+
+  .app-footer p {
+    margin: 6px 0;
+  }
 }
